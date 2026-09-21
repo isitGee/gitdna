@@ -1,0 +1,30 @@
+{
+  "name": "gitdna",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "test:render": "esbuild tests/render.tsx --bundle --platform=node --format=cjs --outfile=.test-build/render.cjs --jsx=automatic --log-level=error && node .test-build/render.cjs",
+    "test:dom": "esbuild tests/dom.tsx --bundle --platform=node --format=cjs --outfile=.test-build/dom.cjs --jsx=automatic --log-level=error --external:jsdom && node .test-build/dom.cjs",
+    "test:live": "esbuild tests/live.ts --bundle --platform=node --format=esm --outfile=.test-build/live.mjs --log-level=error && node .test-build/live.mjs",
+    "test": "npm run test:render && npm run test:dom",
+    "gen:logos": "node scripts/generate-brand-logos.mjs"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/jsdom": "^30.0.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "jsdom": "^29.1.1",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.11",
+    "simple-icons": "^16.32.0"
+  }
+}
